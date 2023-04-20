@@ -34,6 +34,7 @@ streamlit.dataframe(fruits_to_show)
 streamlit.header("Fruityvice Fruit Advice!")
 
 import requests
+# fruityvice_response = requests.get("https://fruityvice.com/api/fruit/watermelon")
 fruityvice_response = requests.get("https://fruityvice.com/api/fruit/"+"kiwi")
 
 # Let's removed the line of raw JSON, and separate the base URL from the fruit name (which will make it easier to use a variable there).
