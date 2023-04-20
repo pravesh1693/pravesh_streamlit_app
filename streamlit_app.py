@@ -29,16 +29,53 @@ fruits_selected = streamlit.multiselect("Pick some fruits:", list(my_fruit_list.
 fruits_to_show = my_fruit_list.loc[fruits_selected]
 streamlit.dataframe(fruits_to_show)
 
-# New Section to display fruityvice api response:
+
+
+##  New Section to display fruityvice api response:
+
+# streamlit.header("Fruityvice Fruit Advice!")
+# import requests
+# fruityvice_response = requests.get("https://fruityvice.com/api/fruit/watermelon")
+# streamlit.text(fruityvice_response)
+
+## Let's Get the Fruityvice Data Looking a Little Nicer:
+
+# streamlit.header("Fruityvice Fruit Advice!")
+# import requests
+# fruityvice_response = requests.get("https://fruityvice.com/api/fruit/watermelon")
+# streamlit.text(fruityvice_response)
+
+# Normalizing the data i.e., separating the values into respected fields from json format. 
+# fruityvice_normalized = pandas.json_normalize(fruityvice_response.json())
+
+# Setting the format of normalized data as Dataframe to look better.
+# streamlit.dataframe(fruityvice_normalized)
+
+
+
+## Let's removed the line of raw JSON, and separate the base URL from the fruit name (which will make it easier to use a variable there).
+
+# streamlit.header("Fruityvice Fruit Advice!")
+# import requests
+# fruityvice_response = requests.get("https://fruityvice.com/api/fruit/"+"kiwi")
+
+# Normalizing the data i.e., separating the values into respected fields from json format. 
+# fruityvice_normalized = pandas.json_normalize(fruityvice_response.json())
+
+# Setting the format of normalized data as Dataframe to look better.
+# streamlit.dataframe(fruityvice_normalized)
+
+# streamlit.header("Fruityvice Fruit Advice!")
+
+
+## Add a Text Entry Box and Send the Input to Fruityvice as Part of the API Call:
 
 streamlit.header("Fruityvice Fruit Advice!")
+fruit_choice = streamlit.text_input('What fruit would you like information about?','Kiwi')
+streamlit.write('The user entered ', fruit_choice)
 
 import requests
-# fruityvice_response = requests.get("https://fruityvice.com/api/fruit/watermelon")
-fruityvice_response = requests.get("https://fruityvice.com/api/fruit/"+"kiwi")
-
-# Let's removed the line of raw JSON, and separate the base URL from the fruit name (which will make it easier to use a variable there).
-# streamlit.text(fruityvice_response.json())
+fruityvice_response = requests.get("https://fruityvice.com/api/fruit/"+fruit_choice)
 
 
 # Normalizing the data i.e., separating the values into respected fields from json format. 
@@ -46,3 +83,5 @@ fruityvice_normalized = pandas.json_normalize(fruityvice_response.json())
 
 # Setting the format of normalized data as Dataframe to look better.
 streamlit.dataframe(fruityvice_normalized)
+
+streamlit.header("Fruityvice Fruit Advice!")
