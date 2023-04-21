@@ -91,9 +91,18 @@ streamlit.header("Fruityvice Fruit Advice!")
 # Snowflake Connector:
 import snowflake.connector
 
+#  Let's Query Our Trial Account Metadata:
 my_cnx = snowflake.connector.connect(**streamlit.secrets["snowflake"])
 my_cur = my_cnx.cursor()
 my_cur.execute("SELECT CURRENT_USER(), CURRENT_ACCOUNT(), CURRENT_REGION()")
 my_data_row = my_cur.fetchone()
 streamlit.text("Hello from Snowflake:")
+streamlit.text(my_data_row)
+
+# Let's Query Some Data, Instead:
+my_cnx = snowflake.connector.connect(**streamlit.secrets["snowflake"])
+my_cur = my_cnx.cursor()
+my_cur.execute("SELECT * FROM FRUIT_LOAD_LIST;")
+my_data_row = my_cur.fetchone()
+streamlit.text("The fruit load list contains:")
 streamlit.text(my_data_row)
