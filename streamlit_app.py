@@ -99,10 +99,18 @@ my_data_row = my_cur.fetchone()
 streamlit.text("Hello from Snowflake:")
 streamlit.text(my_data_row)
 
-# Let's Query Some Data, Instead:
+## Let's Query Some Data, Instead:
+# my_cnx = snowflake.connector.connect(**streamlit.secrets["snowflake"])
+# my_cur = my_cnx.cursor()
+# my_cur.execute("SELECT * FROM FRUIT_LOAD_LIST;")
+# my_data_row = my_cur.fetchone()
+# streamlit.text("The fruit load list contains:")
+# streamlit.text(my_data_row)
+
+# Let's Change the Streamlit Components to Make Things Look a Little Nicer:
 my_cnx = snowflake.connector.connect(**streamlit.secrets["snowflake"])
 my_cur = my_cnx.cursor()
 my_cur.execute("SELECT * FROM FRUIT_LOAD_LIST;")
 my_data_row = my_cur.fetchone()
-streamlit.text("The fruit load list contains:")
-streamlit.text(my_data_row)
+streamlit.header("The fruit load list contains:") # Plain Text converted into Header:
+streamlit.dataframe(my_data_row) # Plain Text converted into Dataframe:
