@@ -90,8 +90,6 @@ fruityvice_normalized = pandas.json_normalize(fruityvice_response.json())
 # Setting the format of normalized data as Dataframe to look better.
 streamlit.dataframe(fruityvice_normalized)
 
-streamlit.header("Fruityvice Fruit Advice!")
-
 # Add a STOP Command to Focus Our Attention:
 streamlit.stop()
 
