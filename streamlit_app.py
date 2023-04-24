@@ -219,6 +219,3 @@ if streamlit.button('Add a Fruit to the List'):
     back_from_function = insert_row_snowflake(add_my_fruit)
     my_cnx.close()
     streamlit.text(back_from_function)
-
-    ## Add a STOP Command to Focus Our Attention:
-streamlit.stop()
